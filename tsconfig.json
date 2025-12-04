@@ -1,0 +1,82 @@
+{
+  "compilerOptions": {
+    /* Language and Environment / 语言和环境 */
+    "target": "ES2020",                          // 编译目标 JavaScript 版本
+    "lib": ["ES2020"],                           // 包含的库文件
+    
+    /* Modules / 模块系统 */
+    "module": "commonjs",                        // 使用 CommonJS 模块系统
+    "moduleResolution": "node",                  // ✅ 使用 Node.js 经典模块解析（不要用 node16）
+    "resolveJsonModule": true,                   // 允许导入 JSON 文件
+    "esModuleInterop": true,                     // 兼容 ES 模块和 CommonJS
+    "allowSyntheticDefaultImports": true,        // 允许从没有默认导出的模块导入
+    
+    /* Type Checking / 类型检查 */
+    "strict": true,                              // 启用所有严格类型检查
+    "noImplicitAny": true,                       // 不允许隐式 any 类型
+    "strictNullChecks": true,                    // 严格的 null 检查
+    "strictFunctionTypes": true,                 // 严格的函数类型检查
+    "strictBindCallApply": true,                 // 严格的 bind/call/apply 检查
+    "strictPropertyInitialization": false,       // ✅ 关闭严格属性初始化（避免测试中的问题）
+    "noImplicitThis": true,                      // 不允许 this 有隐式 any 类型
+    "alwaysStrict": true,                        // 始终以严格模式解析
+    
+    /* Additional Checks / 额外检查 */
+    "noUnusedLocals": false,                     // ✅ 允许未使用的局部变量（测试中常见）
+    "noUnusedParameters": false,                 // ✅ 允许未使用的参数
+    "noImplicitReturns": true,                   // 报告函数并非所有代码路径都有返回值
+    "noFallthroughCasesInSwitch": true,         // 报告 switch 语句的 fallthrough 错误
+    
+    /* Emit / 输出 */
+    "outDir": "./dist",                          // 输出目录
+    "rootDir": "./",                             // 根目录
+    "declaration": true,                         // 生成 .d.ts 声明文件
+    "declarationMap": true,                      // 为声明文件生成 sourcemap
+    "sourceMap": true,                           // 生成 sourcemap 文件
+    
+    /* Interop Constraints / 互操作约束 */
+    "isolatedModules": true,                     // 每个文件作为单独的模块
+    "allowJs": true,                             // 允许编译 JavaScript 文件
+    "checkJs": false,                            // 不检查 JavaScript 文件
+    "forceConsistentCasingInFileNames": true,   // 强制文件名大小写一致
+    "skipLibCheck": true,                        // 跳过库文件的类型检查（加快编译）
+    
+    /* Type Roots / 类型定义根目录 */
+    "typeRoots": [
+      "./node_modules/@types",
+      "./typechain-types"
+    ],
+    
+    /* Base URL / 基础 URL */
+    "baseUrl": ".",                              // ✅ 设置基础 URL
+    "paths": {                                   // ✅ 路径映射
+      "*": ["node_modules/*", "typechain-types/*"]
+    }
+  },
+  
+  /* Include / 包含的文件 */
+  "include": [
+    "./test/**/*.ts",
+    "./scripts/**/*.ts",
+    "./typechain-types/**/*.ts",
+    "./hardhat.config.ts"
+, "scripts/upgrade.js"  ],
+  
+  /* Exclude / 排除的文件 */
+  "exclude": [
+    "node_modules",
+    "dist",
+    "cache",
+    "artifacts",
+    "coverage"
+  ],
+  
+  /* TypeScript-ESLint Options / TypeScript-ESLint 选项 */
+  "ts-node": {
+    "transpileOnly": true,                       // ✅ 只转译，不做类型检查（加快速度）
+    "files": true,
+    "compilerOptions": {
+      "module": "commonjs"
+    }
+  }
+}
